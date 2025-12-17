@@ -12,7 +12,7 @@ export const metadata = {
   image: "/next.svg",  // URL of an image relevant to the page content
   siteName: "Next.js mysql example",
   type: "website",
-  url: "https://github.com/Muurtaja/nextjs-mysql-example",  // URL of the page
+  url: "https://github.com/weblankan-rnd/nextjs-mysql-devops-test",  // URL of the page
 };
 
 

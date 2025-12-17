@@ -33,7 +33,7 @@ const UserList = () => {
         <h1 className="text-2xl font-bold">User List</h1>
         <div>
           <a
-            href="https://github.com/Muurtaja/nextjs-mysql-example"
+            href="https://github.com/weblankan-rnd/nextjs-mysql-devops-test"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 hover:underline"
