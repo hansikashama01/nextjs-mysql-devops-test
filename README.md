@@ -1,58 +1,82 @@
-# NextJS + MySQL DevOps Interview Tasks
+Title: Next.js + MySQL Docker Project Workflow
+1. Project Setup
 
-This assessment is simple: complete the items below and share the resulting links. No how-to details are provided just deliver the outcomes.
+Clone the repository.
 
-## Tasks to complete
-1. Fork this [repository](https://github.com/weblankan-rnd/nextjs-mysql-devops-test)
-to your GitHub profile and keep it public.  
-2. Create a Dockerfile to run the project.
-3. Create `docker-compose.yml` with the app and a MySQL database.
-4. Set up a GitHub Actions CI/CD pipeline that builds the web app image and pushes it to Docker Hub or GitHub Container Registry.
-5. Document what you implemented and how to run the project with `docker-compose.yml` (beginner-friendly).
-6. Provide your public repository link and the published Docker image link(s).
+Ensure all project files (Dockerfile, docker-compose.yml, package.json, knexfile) are present.
 
-## Build targets
-- Node.js version: 18.x (use the same in Dockerfile, compose, and CI).
-- Next.js build commands:
-  ```bash
-  npm install
-  npx knex migrate:latest --knexfile knexfile.ts  #Run migrations
-  npx knex seed:run --knexfile knexfile.ts  #Run seeders (optional) 
-  npm run dev
-  ```
-  (Use `npm install` locally if you are not in CI.)
+Verify project structure: frontend code, migrations, and config files.
 
-## Links to provide (fill in after completion)
-- Public fork: https://github.com/YOUR_USERNAME/nextjs-mysql-devops-test
-- Published image: docker.io/YOUR_USERNAME/nextjs-mysql-devops-test:latest (or ghcr.io/YOUR_USERNAME/nextjs-mysql-devops-test:latest)
-- Optional: Latest CI/CD run URL
+2. Local Development
 
-## Final submission
-Email the following to support@weblankan.com with CC to manager@weblankan.com:
-- Link to your public fork.
-- Link to the built Docker Hub (or GHCR) image.
-- Screenshot of a successful GitHub Actions run.
-- Screenshot of the running web app UI.
-- A short, beginner-friendly note on running with `docker compose` (env file, `docker compose up -d --build`, and `docker compose down`).
+Install dependencies locally.
 
-## Scoring
+Run the frontend locally to confirm functionality.
 
-### 1. Repository Setup & Visibility — 25 Points
-- Working public URL: 5 pts
-- Comprehensive documentation in `README.md`: 15 pts
-- Relevant screenshots included in `README.md`: 5 pts
+Ensure database connection works locally.
 
-### 2. Dockerfile — 25 Points
-- Well-documented Dockerfile with clear comments: 20 pts
-- Advanced Docker practices (multi-stage build, non-root user, security best practices, health checks): 5 pts (attempt only if you fully understand the requirements)
+3. Docker Setup
 
-### 3. docker-compose.yml — 25 Points
-- Properly documented `docker-compose.yml` with app + MySQL, environment variables, and volumes: 20 pts
-- Health checks configured correctly: 5 pts (attempt only if you fully understand the requirements)
+Install Docker Desktop or Docker Engine.
 
-### 4. GitHub Actions (CI/CD) — 25 Points
-- Pipeline for building and pushing Docker images to a registry: 20 pts
-- Multi-stage pipeline configuration: 5 pts
+Create a Dockerfile for the frontend with Node.js.
 
-## Note
-This is a standard assessment stick to the requested deliverables and respond only with what you actually know. No filler or “good luck” messages; incomplete answers here do not preclude future interview stages.
+Install dependencies and run the Next.js server in the Dockerfile.
+
+Set up docker-compose.yml for frontend and MySQL.
+
+Configure environment variables for DB and ports.
+
+4. Running Project in Docker
+
+Use Docker Compose to build and start containers.
+
+Verify containers are running and ports are exposed.
+
+Access frontend in the browser and confirm DB connection.
+
+5. Database Migrations
+
+Ensure knex migrations are set up.
+
+Run migrations manually or automatically on container startup.
+
+Confirm required tables exist in MySQL container.
+
+6. GitHub CI/CD Workflow
+
+Push code to GitHub.
+
+Configure GitHub Actions to build Docker image on every main branch push.
+
+Add Docker Hub or GitHub Container Registry credentials as secrets.
+
+Workflow builds image, pushes to registry, and logs success/failure.
+
+7. Deployment
+
+Pull Docker image from registry on any server.
+
+Run container with port mapping.
+
+Access application in browser and verify DB connection.
+
+8. Maintenance
+
+Update dependencies and rebuild images when needed.
+
+Run migrations for database updates.
+
+Push updates to GitHub to trigger CI/CD.
+
+Monitor container logs for issues.
+
+9. Notes
+
+Dockerfile and docker-compose.yml must always be up to date.
+
+Next.js should bind to 0.0.0.0 inside container.
+
+Ensure environment variables are consistent across configs.
+
+Use Docker image tags for version control.
