@@ -1,25 +1,23 @@
-# Use Node.js version 18 as the base image
+# Use Node.js 18
 FROM node:18
 
-# Set the working directory inside the container to /app
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the container
-# This allows Docker to cache dependencies, so npm install runs only when these files change
+# Copy package files
 COPY package*.json ./
 
-# Install project dependencies
+# Install dependencies
 RUN npm install
 
-# Install TypeScript and ts-node globally (needed if you run TypeScript scripts inside the container)
-RUN npm install -g ts-node typescript
+# Install knex globally (needed for migrations)
+RUN npm install -g knex ts-node typescript
 
-# Copy the rest of the project files into the container
+# Copy project files
 COPY . .
 
-# Expose port 3000 so the container can be accessed from the host machine
+# Expose Next.js port
 EXPOSE 3000
 
-# Start the Next.js development server when the container runs
-# Using npm run dev, which should bind to 0.0.0.0 inside the container for external access
+# Start the app
 CMD ["npm", "run", "dev"]
